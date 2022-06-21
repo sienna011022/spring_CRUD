@@ -1,5 +1,7 @@
 package com.example.projectCRUD.dto;
 
+import com.example.projectCRUD.entity.Article;
+
 public class ArticleForm {
 
     private String title;
@@ -20,4 +22,8 @@ public class ArticleForm {
     }
 
 
+    public Article toEntity() {
+        //entity 객체 반환
+        return new Article(null,title,content);
+    }
 }
