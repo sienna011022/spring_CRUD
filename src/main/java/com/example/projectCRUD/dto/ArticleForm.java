@@ -1,7 +1,11 @@
 package com.example.projectCRUD.dto;
 
 import com.example.projectCRUD.entity.Article;
+import lombok.AllArgsConstructor;
+import lombok.ToString;
 
+@AllArgsConstructor
+@ToString
 public class ArticleForm {
 
     private String title;
@@ -9,17 +13,17 @@ public class ArticleForm {
 
     private String content;
 
-    public ArticleForm(String title, String content) {
-        this.title = title;
-        this.content = content;
-    }
-    @Override
-    public String toString() {
-        return "ArticleForm{" +
-                "title='" + title + '\'' +
-                ", content='" + content + '\'' +
-                '}';
-    }
+//    public ArticleForm(String title, String content) {
+//        this.title = title;
+//        this.content = content;
+//    }
+//    @Override
+//    public String toString() {
+//        return "ArticleForm{" +
+//                "title='" + title + '\'' +
+//                ", content='" + content + '\'' +
+//                '}';
+//    }
 
 
     public Article toEntity() {
