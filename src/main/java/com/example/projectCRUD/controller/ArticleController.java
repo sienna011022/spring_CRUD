@@ -88,7 +88,6 @@ public class ArticleController {
             articleRepository.save(articleEntity);
         }
 
-
         //3.수정결과를 페이지로 반환
         log.info(form.toString());
         return "redirect:/articles/"+articleEntity.getId();
