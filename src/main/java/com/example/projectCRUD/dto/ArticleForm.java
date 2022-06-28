@@ -2,11 +2,17 @@ package com.example.projectCRUD.dto;
 
 import com.example.projectCRUD.entity.Article;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
 @AllArgsConstructor
 @ToString
+@NoArgsConstructor
+@Setter
 public class ArticleForm {
+
+    private Long id;
 
     private String title;
 
@@ -28,6 +34,6 @@ public class ArticleForm {
 
     public Article toEntity() {
         //entity 객체 반환
-        return new Article(null,title,content);
+        return new Article(id,title,content);
     }
 }

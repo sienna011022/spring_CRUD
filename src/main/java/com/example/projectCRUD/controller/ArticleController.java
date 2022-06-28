@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 import java.util.Optional;
@@ -27,7 +28,7 @@ public class ArticleController {
     }
     //폼에서 던진 주소로
     //데이터를 받으려는 객체dto를 넣어서
-    //파라미터로 dto를 받아옴 = ArticleForn
+    //파라미터로 dto를 받아옴 = ArticleForm
     @PostMapping("/articles/create")
     public String createArticle(ArticleForm form){
         //1.DTO 를 Entity로 변환
@@ -71,5 +72,43 @@ public class ArticleController {
         model.addAttribute("articleList",articleEntityList);
         //3. 뷰 페이지를 설정
         return "articles/index";
+    }
+
+    @PostMapping("/articles/update")
+    //원래는 patch 매핑
+    public String update(ArticleForm form){
+        //1.dto를 엔티티로 변환한다.
+        Article articleEntity = form.toEntity();
+        log.info(articleEntity.toString());
+        //2.엔티티를 DB로 저장한다.
+        //2.1 데이터 아이디를 매핑해서 기존 값 가져오기
+        Optional<Article> target = articleRepository.findById(articleEntity.getId());
+        //2.2 기존 데이터에 값을 갱신
+        if(target != null){
+            articleRepository.save(articleEntity);
+        }
+
+
+        //3.수정결과를 페이지로 반환
+        log.info(form.toString());
+        return "redirect:/articles/"+articleEntity.getId();
+
+    }
+    @GetMapping("/articles/{id}/delete")
+    public String delete(@PathVariable Long id, RedirectAttributes rttr){
+        log.info("삭제 요청이 들어왔습니다");
+        //1. 삭제 대상을 가져오기
+        //url에서 가져오기=pathvariable
+        Optional<Article> target = articleRepository.findById(id);
+        log.info(target.toString());
+        //2. 대상을 삭제
+        if(target != null){
+            articleRepository.deleteById(id);
+        //메세지 남겨주기
+            rttr.addFlashAttribute("msg","Delete complete");
+        }
+
+        //3. 결과 페이지로 리다이렉트
+        return "redirect:/articles";
     }
 }
