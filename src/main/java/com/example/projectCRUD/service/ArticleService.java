@@ -23,7 +23,8 @@ public class ArticleService {
     }
 
     public Article show(Long id) {
-        return articleRepository.findById( id).orElse(null);
+
+        return articleRepository.findById(id).orElse(null);
     }
 
     public Article create(ArticleForm dto) {
@@ -46,13 +47,16 @@ public class ArticleService {
         //3. 잘못된 요청 처리(대상이 없거나, id가 다른 경우)
         if(target == null || id != article.getId()){
             //400 잘못된 요청에 대한 응답
+
             log.info("잘못된 요청 id:{},article:{}",id, article.toString());
+            log.info("targrt type{},내가 입력한 값 타입:{}",target.getClass().getName(),id.getClass().getName());
             //상태코드를 실어서 보내줘야해서 responseEntity<>
             return null;
 
         }
         //4.업데이트 및 정상 응답
         target.patch(article);
+        log.info("targrt type{},내가 입력한 값 타입:{}",target.getClass().getName(),id.getClass().getName());
         Article updated = articleRepository.save(target);
         return updated;
     }
