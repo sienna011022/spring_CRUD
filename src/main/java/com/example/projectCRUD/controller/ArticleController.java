@@ -1,8 +1,10 @@
 package com.example.projectCRUD.controller;
 
 import com.example.projectCRUD.dto.ArticleForm;
+import com.example.projectCRUD.dto.CommentDto;
 import com.example.projectCRUD.entity.Article;
 import com.example.projectCRUD.repository.ArticleRepository;
+import com.example.projectCRUD.service.CommentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,7 +22,8 @@ import java.util.Optional;
 public class ArticleController {
     @Autowired
     private ArticleRepository articleRepository;
-
+    @Autowired
+    private CommentService commentService;
     @GetMapping("/articles/new")
     public String newArticleForm(){
 
@@ -48,8 +51,11 @@ public class ArticleController {
         log.info("id = "+id);
         //1.아이디로 데이터를 가져옴
         Article articleEntity = articleRepository.findById(id).orElse(null);
+        //데이터를 가져오기
+        List<CommentDto> commentDtos = commentService.comments(id);
         //2. 가져온 데이터를 모델에 등록
         model.addAttribute("article",articleEntity);
+        model.addAttribute("commentDtos",commentDtos);
         //3. 보여줄 페이지를 성정
         return "articles/show";
     }
