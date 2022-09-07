@@ -9,9 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,15 +31,38 @@ public class CommentApiController {
         //서비스에게 위임
         List<CommentDto> dtos = commentService.comments(articleId);
 
-
-
         //결과 응답
         return ResponseEntity.status(HttpStatus.OK).body(dtos);
     }
 
     //댓글 생성
 
-    //댓글 수정
+    @PostMapping("api/articles/{articleId}/comments")
+    public ResponseEntity<CommentDto> create(@PathVariable Long articleId, @RequestBody CommentDto dto){
+        //서비스에게 위임
+        CommentDto createdDto = commentService.create(articleId,dto);
 
+        ///결과 응답
+        return ResponseEntity.status(HttpStatus.OK).body(createdDto);
+    }
+
+    //댓글 수정
+    //댓글의 PK로 조회하기
+    @PatchMapping("/api/comments/{id}")
+    public ResponseEntity<CommentDto> update(@PathVariable Long id, @RequestBody CommentDto dto) {
+        //서비스에게 위임
+        CommentDto updatedDto = commentService.update(id, dto);
+
+        ///결과 응답
+        return ResponseEntity.status(HttpStatus.OK).body(updatedDto);
+    }
     //댓글 삭제
+    @DeleteMapping("/api/comments/{id}")
+    public ResponseEntity<CommentDto> delete(@PathVariable Long id) {
+        // 서비스에게 위임
+        CommentDto deletedDto = commentService.delete(id);
+        // 결과 응답
+        return ResponseEntity.status(HttpStatus.OK).body(deletedDto);
+    }
 }
+
