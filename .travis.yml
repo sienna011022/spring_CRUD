@@ -7,7 +7,7 @@ branches:
     - main
 
 before_install:
-  - chmod +x gradlew
+  - chomod +x gradlew
 
 # Travis CI 서버의 Home
 cache:
