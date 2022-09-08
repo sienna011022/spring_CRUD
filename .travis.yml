@@ -17,6 +17,22 @@ cache:
 
 script: "./gradlew clean build"
 
+deploy:
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+
+    bucket: springboot-webrtc-build # S3 버킷
+    region: ap-northeast-2
+    skip_cleanup: true
+
+    acl: private # zip 파일 접근을 private로 설정
+    local_dir: chat-service
+    wait-until-deployed: true
+  [출처] [CI/CD] Travis CI와 AWS S3 연동하기|작성자 조정현
+
+
+
 # CI 실행 완료시 메일로 알람
 notifications:
   email:
