@@ -29,7 +29,6 @@ deploy:
     acl: private # zip 파일 접근을 private로 설정
     local_dir: chat-service
     wait-until-deployed: true
-  [출처] [CI/CD] Travis CI와 AWS S3 연동하기|작성자 조정현
 
 
 
