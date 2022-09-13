@@ -1,12 +1,13 @@
 package com.example.projectCRUD.api;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import com.example.projectCRUD.domain.entity.Article;
 import com.example.projectCRUD.service.ArticleServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.Assert.*;
 @SpringBootTest
 public class ArticleApiControllerTest {
 
