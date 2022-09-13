@@ -1,8 +1,7 @@
-package com.example.projectCRUD.entity;
+package com.example.projectCRUD.domain.entity;
 
-import com.example.projectCRUD.dto.CommentDto;
+import com.example.projectCRUD.domain.dto.CommentDto;
 import lombok.*;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 

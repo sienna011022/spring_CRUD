@@ -1,6 +1,6 @@
-package com.example.projectCRUD.dto;
+package com.example.projectCRUD.domain.dto;
 
-import com.example.projectCRUD.entity.Article;
+import com.example.projectCRUD.domain.entity.Article;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

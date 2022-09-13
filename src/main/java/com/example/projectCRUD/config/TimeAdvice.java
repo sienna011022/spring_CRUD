@@ -1,2 +1,25 @@
-package com.example.projectCRUD.config;public class TimeAdvice {
+package com.example.projectCRUD.config;
+
+import lombok.extern.slf4j.Slf4j;
+import org.aopalliance.intercept.MethodInterceptor;
+import org.aopalliance.intercept.MethodInvocation;
+
+
+@Slf4j
+public class TimeAdvice implements MethodInterceptor {
+
+  @Override
+  public Object invoke(MethodInvocation invocation) throws Throwable {
+    log.info("Time proxy 실행");
+    long startTime = System.currentTimeMillis();
+
+    Object result = invocation.proceed();
+
+    long endTime = System.currentTimeMillis();
+    long resultTime = endTime - startTime;
+    log.info("time proxy  result Time = {}ms",resultTime);
+
+    return result;
+
+  }
 }

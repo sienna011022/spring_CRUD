@@ -3,10 +3,12 @@ package com.example.projectCRUD.service;
 import com.example.projectCRUD.domain.dto.ArticleForm;
 import com.example.projectCRUD.domain.entity.Article;
 import java.util.List;
+import org.springframework.stereotype.Service;
 
-public interface ArticleServiceImpl {
+@Service
+public interface ArticleService {
 
-   List<Article> index();
+  List<Article> index();
 
   Article show(Long id);
 

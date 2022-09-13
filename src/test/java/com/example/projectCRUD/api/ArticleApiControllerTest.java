@@ -1,22 +1,17 @@
 package com.example.projectCRUD.api;
 
-import com.example.projectCRUD.dto.ArticleForm;
-import com.example.projectCRUD.entity.Article;
-import com.example.projectCRUD.service.ArticleService;
+import com.example.projectCRUD.domain.entity.Article;
+import com.example.projectCRUD.service.ArticleServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import static org.junit.Assert.*;
 @SpringBootTest
 public class ArticleApiControllerTest {
 
     @Autowired
-    ArticleService articleService;
+    ArticleServiceImpl articleServiceImpl;
 //    @Test
 //    public void index() {
 //        // 예상
@@ -37,7 +32,7 @@ public class ArticleApiControllerTest {
         Long id = 1L;
         Article expected = new Article(id, "가가가가", "1111");
         // 실제
-        Article article = articleService.show(id);
+        Article article = articleServiceImpl.show(id);
         // 비교
         assertEquals(expected.toString(), article.toString());
     }
@@ -47,7 +42,7 @@ public class ArticleApiControllerTest {
         Long id = -1L;
         Article expected = null;
         // 실제
-        Article article = articleService.show(id);
+        Article article = articleServiceImpl.show(id);
         // 비교
         assertEquals(expected, article);
     }

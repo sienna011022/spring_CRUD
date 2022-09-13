@@ -1,27 +1,26 @@
 package com.example.projectCRUD.service;
 
-import com.example.projectCRUD.dto.CommentDto;
-import com.example.projectCRUD.entity.Article;
-import com.example.projectCRUD.entity.Comment;
+import com.example.projectCRUD.domain.dto.CommentDto;
+import com.example.projectCRUD.domain.entity.Article;
+import com.example.projectCRUD.domain.entity.Comment;
 import com.example.projectCRUD.repository.ArticleRepository;
 import com.example.projectCRUD.repository.CommentRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
-public class CommentService {
+public class CommentService implements CommentServiceImpl {
 
     private final CommentRepository commentRepository;
 
     private final ArticleRepository articleRepository;
 
-
+    @Override
     public List<CommentDto> comments(Long articleId) {
 
 
@@ -30,7 +29,7 @@ public class CommentService {
                 .map(comment -> CommentDto.createCommentDto(comment))
                 .collect(Collectors.toList());
     }
-
+    @Override
     @Transactional
     public CommentDto create(Long articleId, CommentDto dto) {
 
@@ -50,7 +49,7 @@ public class CommentService {
         return CommentDto.createCommentDto(created);
 
     }
-
+    @Override
     @Transactional
     public CommentDto update(Long id, CommentDto dto) {
         // 댓글 조회 및 예외 발생
@@ -63,7 +62,7 @@ public class CommentService {
         // 댓글 엔티티를 DTO로 변환 및 반환
         return CommentDto.createCommentDto(updated);
     }
-
+    @Override
     @Transactional
     public CommentDto delete(Long id) {
         // 댓글 조회(및 예외 발생)

@@ -1,6 +1,6 @@
-package com.example.projectCRUD.dto;
+package com.example.projectCRUD.domain.dto;
 
-import com.example.projectCRUD.entity.Comment;
+import com.example.projectCRUD.domain.entity.Comment;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
