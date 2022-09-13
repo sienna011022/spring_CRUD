@@ -27,7 +27,7 @@ deploy:
     skip_cleanup: true
 
     acl: private # zip 파일 접근을 private로 설정
-    local_dir: ./dist
+    local_dir: deploy
     wait-until-deployed: true
     on:
       all_branched: true
