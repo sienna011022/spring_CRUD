@@ -6,7 +6,6 @@ import com.example.projectCRUD.domain.entity.Article;
 import com.example.projectCRUD.repository.ArticleRepository;
 import com.example.projectCRUD.service.ArticleService;
 import com.example.projectCRUD.service.ArticleServiceImpl;
-//import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.aop.framework.ProxyFactory;
@@ -34,8 +33,6 @@ class TimeAdviceTest {
     ProxyFactory proxyFactory = new ProxyFactory(target);
     proxyFactory.addAdvice(new TimeAdvice());
     ArticleService proxy = (ArticleService) proxyFactory.getProxy();
-//    log.info("target Class = {}",target.getClass());
-//    log.info("Proxy Class = {}",proxy.getClass());
     long testId = 1022;
     proxy.show(testId);
 
