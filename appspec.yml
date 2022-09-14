@@ -2,5 +2,5 @@ version: 0.0
 os: ubuntu
 files:
   - source: /
-    destination: /home/ubuntu/cicdeTest/zip
+    destination: /home/ubuntu/cicdTest/zip
     overwrite: yes
