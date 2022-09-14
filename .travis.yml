@@ -52,6 +52,9 @@ deploy:
 
 
 
+    on:
+      all_branches: true # master말고 다른 모든 브런치 허용
+
 
 
 
