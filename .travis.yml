@@ -31,10 +31,19 @@ deploy:
     bucket: bbl-career
     region: ap-northeast-2
 
-    bundle_type: zip #압축 확장자
-    application: sungyoon
-    deployment_group: sungyoon
+  - provider: codedeploy
+      access_key_id: $AWS_ACCESS_KEY
+      secret_access_key: $AWS_SECRET_KEY
 
+      bucket: bbl-career
+      key: spring_deploy_test.zip
+
+      bundle_type: zip
+      application: sungyoon
+
+      deplyment_group: sungyoon
+      region: ap-northeast-2
+      wait-until-deployed: true
 
 
     skip_cleanup: true
