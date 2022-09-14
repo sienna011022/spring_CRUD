@@ -32,8 +32,8 @@ deploy:
     region: ap-northeast-2
 
     bundle_type: zip #압축 확장자
-    application: springboot-webrtc
-    deployment_group: springboot-webrtc-group
+    application: sungyoon
+    deployment_group: sungyoon
 
 
 
