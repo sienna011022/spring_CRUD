@@ -1,22 +1,15 @@
-package com.example.projectCRUD.config;
+package com.example.projectCRUD.aspect;
 
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Pointcut;
 
 @Slf4j
 @Aspect
 public class AspectV1 {
 
-  @Pointcut("execution(* com.example.projectCRUD..*(..))")
-  private void allOrder(){}
-
-  @Pointcut("execution(* *..*Service.*(..))")
-  private void allService(){}
-
-  @Around("allOrder()")
+  @Around("com.example.projectCRUD.aspect.Pointcuts.allOrder()")
   public Object doLog(ProceedingJoinPoint joinPoint) throws Throwable{
     log.info("==================================");
     log.info("[log] {}",joinPoint.getSignature());
@@ -24,7 +17,7 @@ public class AspectV1 {
     return result;
   }
 
-  @Around("allOrder() && allService()")
+  @Around("com.example.projectCRUD.aspect.Pointcuts.allOrderandService()")
   public Object doTransaction(ProceedingJoinPoint joinPoint) throws Throwable{
     try{
       Object result = joinPoint.proceed();

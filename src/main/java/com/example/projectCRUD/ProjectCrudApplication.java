@@ -1,6 +1,6 @@
 package com.example.projectCRUD;
 
-import com.example.projectCRUD.config.AspectV1;
+import com.example.projectCRUD.aspect.AspectV1;
 import com.example.projectCRUD.trace.LogTrace;
 import com.example.projectCRUD.trace.ThreadLocalLogTrace;
 import org.springframework.boot.SpringApplication;
