@@ -15,3 +15,6 @@ public class Pointcuts {
   public void allOrderandService(){}
 
 }
+
+//깃 모지 테스트
+
