@@ -1,5 +1,6 @@
 package com.example.projectCRUD.service;
 
+import com.example.projectCRUD.aop.Trace;
 import com.example.projectCRUD.domain.dto.CommentDto;
 import com.example.projectCRUD.domain.entity.Article;
 import com.example.projectCRUD.domain.entity.Comment;
@@ -21,6 +22,7 @@ public class CommentService implements CommentServiceImpl {
     private final ArticleRepository articleRepository;
 
     @Override
+    @Trace
     public List<CommentDto> comments(Long articleId) {
 
 

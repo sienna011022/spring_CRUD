@@ -1,5 +1,6 @@
 package com.example.projectCRUD.service;
 
+import com.example.projectCRUD.aop.Trace;
 import com.example.projectCRUD.domain.dto.ArticleForm;
 import com.example.projectCRUD.domain.entity.Article;
 import com.example.projectCRUD.repository.ArticleRepository;
@@ -18,11 +19,13 @@ public class ArticleServiceImpl implements ArticleService {
   private final ArticleRepository articleRepository;
 
   @Override
+  @Trace
   public List<Article> index(){
     return articleRepository.findAll();
 
   }
   @Override
+  @Trace
   public Article show(Long id) {
     log.info("아이디 찾기 실행");
 
